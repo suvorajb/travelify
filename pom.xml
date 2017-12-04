@@ -18,6 +18,15 @@
 	</properties>
 
 	<dependencies>
+		
+		<!-- local jar -->
+		<dependency>
+			<groupId>com.claygregory.common</groupId>
+			<artifactId>claygregory-app</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cg-jcommons.jar</systemPath>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
