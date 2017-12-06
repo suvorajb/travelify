@@ -235,18 +235,6 @@ body {
 																value="${place.name}"></c:set>
 															<c:set var="placeaddrss" scope="request"
 																value="${place.formattedAddress}"></c:set>
-															<%
-																String plcname = StringUtils.replace(((String) request.getAttribute("placename")), "&",
-																						"And");
-																				String plcaddr = StringUtils.replace(((String) request.getAttribute("placeaddrss")), "&",
-																						"And");
-																				String clipplcstr = StringEscapeUtils.escapeEcmaScript(plcname) + ";"
-																						+ StringEscapeUtils.escapeEcmaScript(plcaddr);
-															%>
-															<a class="btn btn-danger" href="#"
-																onclick="javascript: clipthisplace('<%=clipplcstr %>;${place.reference};${place.geometry};${cat}', this); return false;">Clip
-																It <i class="icon-paperclip"></i>
-															</a>
 														</c:when>
 													</c:choose>
 												</p>

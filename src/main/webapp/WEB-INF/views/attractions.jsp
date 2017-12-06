@@ -104,9 +104,11 @@ body {
 			<h1>Travelify City Guide... ${hdng}</h1>
 			<p>
 			<h2>
-				<a href="/Travelify/travelicity/guide/attractions/eating/${citynm}">Eating Guide</a> | <a
-					href="/Travelify/travelicity/guide/attractions/travel/${citynm}">Travel Guide</a> | <a
-					href="/Travelify/travelicity/guide/attractions/attractions/${citynm}">Popular
+				<a href="/Travelify/travelicity/guide/eating/${citynm}">Eating
+					Guide</a> | <a
+					href="/Travelify/travelicity/guide/travel/${citynm}">Travel
+					Guide</a> | <a
+					href="/Travelify/travelicity/guide/attractions/${citynm}">Popular
 					Attraction</a>
 			</h2>
 			</p>
@@ -220,50 +222,22 @@ body {
 														href="http://maps.google.com/maps?q=${place.geometry}"
 														target="_blank">Show on Google Maps <i
 														class="icon-map-marker"></i></a>
-													<c:if test="${place.clipped==false }">
-														<c:choose>
-															<c:when test="${not empty place.vicinity}">
-																<c:set var="placename" scope="request"
-																	value="${place.name}"></c:set>
-																<c:set var="placeaddrss" scope="request"
-																	value="${place.vicinity}"></c:set>
-																<%
-																	String plcname = StringUtils.replace(((String) request.getAttribute("placename")), "&",
-																								"And");
-																						String plcaddr = StringUtils.replace(((String) request.getAttribute("placeaddrss")),
-																								"&", "And");
-																						String clipplcstr = StringEscapeUtils.escapeEcmaScript(plcname) + ";"
-																								+ StringEscapeUtils.escapeEcmaScript(plcaddr);
-																%>
-																<a class="btn btn-danger" href="#"
-																	onclick="javascript: clipthisplace('<%=clipplcstr %>;${place.reference};${place.geometry};${cat}', this); return false;">Clip
-																	It <i class="icon-paperclip"></i>
-																</a>
-															</c:when>
-															<c:when test="${not empty place.formattedAddress}">
-																<c:set var="placename" scope="request"
-																	value="${place.name}"></c:set>
-																<c:set var="placeaddrss" scope="request"
-																	value="${place.formattedAddress}"></c:set>
-																<%
-																	String plcname = StringUtils.replace(((String) request.getAttribute("placename")), "&",
-																								"And");
-																						String plcaddr = StringUtils.replace(((String) request.getAttribute("placeaddrss")),
-																								"&", "And");
-																						String clipplcstr = StringEscapeUtils.escapeEcmaScript(plcname) + ";"
-																								+ StringEscapeUtils.escapeEcmaScript(plcaddr);
-																%>
-																<a class="btn btn-danger" href="#"
-																	onclick="javascript: clipthisplace('<%=clipplcstr %>;${place.reference};${place.geometry};${cat}', this); return false;">Clip
-																	It <i class="icon-paperclip"></i>
-																</a>
-															</c:when>
-														</c:choose>
-													</c:if>
-													<c:if test="${place.clipped==true }">
-														<a class="btn btn-danger" href="#">Clip It <i
-															class="icon-paperclip"></i></a>
-													</c:if>
+													<c:choose>
+														<c:when test="${not empty place.vicinity}">
+															<c:set var="placename" scope="request"
+																value="${place.name}"></c:set>
+															<c:set var="placeaddrss" scope="request"
+																value="${place.vicinity}"></c:set>
+														</c:when>
+														<c:when test="${not empty place.formattedAddress}">
+															<c:set var="placename" scope="request"
+																value="${place.name}"></c:set>
+															<c:set var="placeaddrss" scope="request"
+																value="${place.formattedAddress}"></c:set>
+
+														</c:when>
+													</c:choose>
+
 												</p>
 												<p>&nbsp;</p>
 												<p>

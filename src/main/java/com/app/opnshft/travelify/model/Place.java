@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import com.claygregory.common.data.geo.GeoLocation;
-
 public class Place {
 	
 	public static class Geometry {
@@ -23,43 +21,38 @@ public class Place {
 		
 	}
 	
-	public static class Location implements GeoLocation {
+	public static class Location {
 		
 		private float lat;
 
 		private float lng;
 
-		@Override
-		public Integer getAccuracy( ) {
-			return null;
-		}
-
-		@Override
-		public float getLatitude( ) {
+		public float getLat( ) {
 			return this.lat;
 		}
 
-		@Override
-		public float getLongitude( ) {
+		public float getLng( ) {
 			return this.lng;
 		}
 		
 		@Override
 		public String toString( ) {
-			return this.getLatitude( ) + ", " + this.getLongitude( );
+			return this.getLat( ) + ", " + this.getLng( );
 		}
 		
 	}
-		
+	
 	private String formattedAddress;
 	
 	private Geometry geometry;
-		
+	
 	private String icon;
 	
 	private String id;
 	
 	private String name;
+	
+	private String placeId;
 	
 	private Float rating;
 	
@@ -71,13 +64,11 @@ public class Place {
 
 	private String vicinity;
 	
-	private OpeningHours openingHours;
+	private OpeningHours openingHours;	
 	
 	private List<PlacePhoto> photos = Collections.emptyList( );
-	
-	private boolean clipped;
-	
-		
+
+
 	public String getFormattedAddress( ) {
 		return this.formattedAddress;
 	}
@@ -90,6 +81,7 @@ public class Place {
 		return this.icon;
 	}
 
+	@Deprecated
 	public String getId( ) {
 		return this.id;
 	}
@@ -98,10 +90,15 @@ public class Place {
 		return this.name;
 	}
 
+	public String getPlaceId( ) {
+		return this.placeId;
+	}
+
 	public Float getRating( ) {
 		return this.rating;
 	}
 
+	@Deprecated
 	public String getReference( ) {
 		return this.reference;
 	}
@@ -117,20 +114,12 @@ public class Place {
 	public String getVicinity( ) {
 		return this.vicinity;
 	}
-
-	public List<PlacePhoto> getPhotos() {
-		return photos;
-	}
-
+	
 	public OpeningHours getOpeningHours() {
 		return this.openingHours;
 	}
-
-	public boolean isClipped() {
-		return clipped;
-	}
-
-	public void setClipped(boolean clipped) {
-		this.clipped = clipped;
-	}
+	
+	public List<PlacePhoto> getPhotos() {
+		return photos;
+	}	
 }
